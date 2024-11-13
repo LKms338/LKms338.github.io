@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<script type="text/javascript" src="test.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <title>第2回秋学期 実践的web開発</title>
+</head>
+<body>
+<h1>実践的Web開発秋後期　テストページ</h1>
+<script>
+  // 第4回 10/16
+printMessage("こんにちは、これはテストメッセージです！");
+
+// 3つの引数を持つ関数の呼び出し
+printThreeArgs("引数1", "引数2", "引数3");
+
+// デフォルト値を持つ引数の関数の呼び出し
+printWithDefault("第一引数のみ");
+printWithDefault("第一引数", "第二引数の上書き");
+
+  // 2021 * 1010の結果を表示
+  console.log("2021 * 1010 の結果: " + multiplyFixed());
+
+  // 2つの引数のかけ算の結果を表示
+  console.log("5 * 7 の結果: " + multiplyTwoArgs(5, 7));
+
+  // 2つの引数のかけ算結果の1の位を表示
+  console.log("12 * 15 の1の位: " + multiplyAndReturnOnesPlace(12, 15));
+
+  // 2つの引数のかけ算結果の10の位を表示
+  console.log("12 * 15 の10の位: " + multiplyAndReturnTensPlace(12, 15));
+  
+</script>
+
+</body>
+</html>
