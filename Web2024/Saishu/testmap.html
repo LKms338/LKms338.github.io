@@ -5,19 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>住所取得と地図表示</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    #form-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    #address {
+      width: 200px;
+      padding: 5px;
+      font-size: 0.9rem;
+    }
+    #submitBtn {
+      padding: 5px 10px;
+      font-size: 0.9rem;
+    }
+    #map {
+      height: 200px;
+      width: 200px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
 <header>
   <h1>住所取得と地図表示</h1>
 </header>
 
-<div>
-  <label for="address">住所を入力してください:</label>
+<div id="form-container">
   <input type="text" id="address" placeholder="例: 東京都八王子市初沢町1231-16">
   <button id="submitBtn">表示</button>
 </div>
 
-<div id="map" style="height: 400px; margin-top: 20px;"></div>
+<div id="map"></div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
