@@ -55,7 +55,7 @@ header h1 {
   transition: background 0.3s ease;
 }
 .username-form button:hover, .tweet-form button:hover {
-  background-color: #0a85d0;
+  background-color: #644e4e;
 }
 .background-color-form {
   display: flex;

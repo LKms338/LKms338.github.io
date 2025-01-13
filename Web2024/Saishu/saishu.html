@@ -5,7 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>八王子周辺カフェ登録型掲示板</title>
   <link rel="stylesheet" href="saishu.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .container {
+      width: 80%; /* Reduced width */
+      max-width: 500px; /* Reduced max width */
+      margin: 20px auto; /* Center the container and add margin-top */
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    #map {
+      height: 250px;
+      width: 90%;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 10px;  /* 左側に空白 */
+      margin-right: 20px; /* 右側に空白 */
+    }
+
+    #form-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 30px;  /* 左側に空白 */
+      margin-right: 20px; /* 右側に空白 */
+    }
+
+  </style>
 </head>
 <body>
 
@@ -24,17 +69,67 @@
     <input type="text" id="address" placeholder="お店の住所を入力してください">
     <button id="saveButton">保存</button>
   </div>
+
   <div class="tweet-form">
     <label for="tweet">コメント</label>
     <textarea id="tweet" rows="3" placeholder="ひと言..."></textarea>
     <button id="postButton">投稿</button>
   </div>
+
   <div class="background-color-form">
     <label for="bgColor">背景:</label>
     <input type="color" id="bgColor">
   </div>
+
+  <!-- 住所取得と地図表示の部分 -->
+  <h3>住所検索</h3>
+  <div id="form-container">
+    <input type="text" id="addressInput" placeholder="例: 東京都八王子市初沢町1231-16">
+    <button id="submitBtn">表示</button>
+  </div>
+
+  <div id="map"></div>
+
   <div class="tweets" id="tweets"></div>
 </div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  // 地図の初期設定
+  const map = L.map('map').setView([35.657442, 139.338538], 12); // 八王子中心
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  function geocodeAddress(address) {
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.length > 0) {
+            const { lat, lon } = data[0];
+            map.setView([lat, lon], 16); // 地図の表示を更新
+            L.marker([lat, lon]).addTo(map)
+                .bindPopup(`<b>${address}</b>`)
+                .openPopup();
+          } else {
+            alert("住所が見つかりませんでした。正確な住所を入力してください。");
+          }
+        })
+        .catch(error => console.error("エラーが発生しました:", error));
+  }
+
+  document.getElementById("submitBtn").addEventListener("click", () => {
+    const address = document.getElementById("addressInput").value.trim();
+    if (address) {
+      geocodeAddress(address);
+    } else {
+      alert("住所を入力してください。");
+    }
+  });
+</script>
+
 <script src="saishu.js"></script>
 
 </body>
