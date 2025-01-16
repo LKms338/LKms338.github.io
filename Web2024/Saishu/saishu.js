@@ -1,4 +1,3 @@
-// 初期値の設定
 let username = "不明";
 let shopName = "";
 let shopLocation = "";
@@ -31,6 +30,8 @@ const defaultTweets = [
   }
 ];
 
+let isSaved = false; // 保存ボタンが押されたかどうかを追跡する変数
+
 function setUsername() {
   const inputUsername = document.getElementById("username").value.trim();
   const inputShopName = document.getElementById("shopName").value.trim();
@@ -53,6 +54,7 @@ function setUsername() {
   localStorage.setItem("shopAddress", shopAddress);
 
   alert(`以下が設定されました。\nユーザー名：${username}\n店舗名：${shopName}\n場所：${shopLocation}\n住所：${shopAddress || "未入力"}`);
+  isSaved = true; // 保存ボタンが押されたことを記録
 }
 
 function addDefaultTweets() {
@@ -86,8 +88,7 @@ function postTweet() {
   const now = new Date();
   const timestamp = now.toLocaleString();
 
-
-  if (!username || !shopName || !shopLocation) {
+  if (!isSaved || !username || !shopName || !shopLocation) {
     alert("ユーザー名、店舗名、場所が設定されていません。保存ボタンを押して設定してください。");
     return;
   }
@@ -120,7 +121,6 @@ function postTweet() {
   tweetContainer.prepend(tweetDiv);
   document.getElementById("tweet").value = "";
 
-  //アラートの設定：投稿時
   alert("投稿されました。");
 }
 
