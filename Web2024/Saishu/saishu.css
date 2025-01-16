@@ -1,6 +1,6 @@
 body {
   font-family: 'Arial', sans-serif;
-  background: #967f7f; /* Initially set to blue */
+  background: #967f7f; /* 初期設定は背景色 */
   margin: 0;
   padding: 0;
   display: flex;
@@ -11,19 +11,19 @@ body {
 }
 header {
   color: white;
-  padding: 10px; /* Adjust as needed */
+  padding: 10px; /* 必要に応じて調整 */
   width: 100%;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 header h1 {
-  font-size: 1.5rem; /* Adjust as needed */
-  margin: 0; /* Remove default margin */
+  font-size: 1.5rem; /* 必要に応じて調整 */
+  margin: 0; /* デフォルトの余白を削除 */
 }
 .container {
-  width: 80%; /* Reduced width */
-  max-width: 500px; /* Reduced max width */
-  margin: 20px auto; /* Center the container and add margin-top */
+  width: 80%; /* 幅を縮小 */
+  max-width: 500px; /* 最大幅を縮小 */
+  margin: 20px auto; /* コンテナを中央に配置し、上部にマージンを追加 */
   background: white;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -32,13 +32,13 @@ header h1 {
 
 .username-form, .tweet-form, .background-color-form {
   background-color: #f9f9f9;
-  padding: 15px; /* Reduced padding */
+  padding: 15px; /* パディングを縮小 */
   border-bottom: 1px solid #eee;
 }
 .username-form input, .tweet-form textarea, .background-color-form input {
   width: calc(100% - 30px);
   margin-top: 10px;
-  padding: 8px; /* Reduced padding */
+  padding: 8px; /* パディングを縮小 */
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 1rem;
@@ -86,15 +86,15 @@ header h1 {
   border-radius: 50%;
 }
 .tweets {
-  padding: 15px; /* Reduced padding */
+  padding: 15px; /* パディングを縮小 */
   background: white;
 }
 .tweet {
   background-color: #f9f9f9;
-  padding: 10px; /* Reduced padding */
+  padding: 10px; /* パディングを縮小 */
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px; /* Reduced margin-bottom */
+  margin-bottom: 15px; /* 下部のマージンを縮小 */
   position: relative;
 }
 .tweet h3 {
